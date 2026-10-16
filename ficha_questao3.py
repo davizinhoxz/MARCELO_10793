@@ -9,6 +9,8 @@ while resposta == 'S':
     os.system("clear")
     #declarar ....
     tentativas = 0
+    pontuacao = 0
+    pontuacoes = [100, 80, 60, 40, 30, 20, 10]
     numGerado = randint(1,100)
     print(numGerado)
 
@@ -26,20 +28,24 @@ while resposta == 'S':
         if meuNum == numGerado:
             print(f"Boa, acertou o número em {tentativas} tentativas.")
 
-            if tentativas == 1:
-                print("E fez 100 pontos!")
-            elif tentativas == 2:
-                print("E fez 80 pontos!")
-            elif tentativas == 3:
-                print("E fez 60 pontos!")
-            elif tentativas == 4:
-                print("E fez 40 pontos!")
-            elif tentativas == 5:
-                print("E fez 30 pontos!")
-            elif tentativas == 6:
-                print("E fez 20 pontos!")
-            elif tentativas == 7:
-                print("E fez 10 pontos!")
+            pontuacao = pontuacoes[tentativas-1]
+
+            print(f"E fez {pontuacao} pontos!49")
+
+            # if tentativas == 1:
+            #     print("E fez 100 pontos!")
+            # elif tentativas == 2:
+            #     print("E fez 80 pontos!")
+            # elif tentativas == 3:
+            #     print("E fez 60 pontos!")
+            # elif tentativas == 4:
+            #     print("E fez 40 pontos!")
+            # elif tentativas == 5:
+            #     print("E fez 30 pontos!")
+            # elif tentativas == 6:
+            #     print("E fez 20 pontos!")
+            # elif tentativas == 7:
+            #     print("E fez 10 pontos!")
 
             break
 
