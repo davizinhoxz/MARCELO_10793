@@ -14,31 +14,38 @@ print("9. Ordenar Tarefas: Organizar as tarefas em ordem alfabética.")
 print("10. Inverter Ordem das Tarefas: Reverter a ordem atual das tarefas.")
 print("11. Copiar Lista de Tarefas: Criar uma cópia independente da lista de tarefas.")
 
-num_tarefa = [1,11]
-
-num_tarefa = input("Número da tarefa desejada: ")
-
+num_tarefa = int(input("\nNúmero da tarefa desejada: "))
 
 match num_tarefa:
     case 1:
-        listaTarefas.append(input("Qual a próxima tarefa? "))
+        tarefa = input("Qual a próxima tarefa? ")
+        listaTarefas.append(tarefa)
     case 2:
-        listaTarefas.extend(input("Quais as próximas tarefas? "))
+        tarefas = input("Quais as próximas tarefas: ")
+        listaTarefas.extend(tarefas)
     case 3:
-        listaTarefas.insert(int(input("Diga a posição da tarefa que deseja inserir: ")), input("Agora qual tarefa quer inserir: "))
+        posicao = (int(input("Diga a posição da tarefa que deseja inserir: ")))
+        tarefa = input("Agora qual tarefa quer inserir: ")
+        listaTarefas.insert(posicao, tarefa)
     case 4:
-        listaTarefas.remove(input("Remova a tarefa desejada pelo nome que escreveu: "))
+        tarefa = input("Remova a tarefa desejada pelo nome que escreveu: ")
+        listaTarefas.remove(tarefa)
     case 5:
         listaTarefas.pop()
     case 6:
         listaTarefas.clear()
     case 7:
-        listaTarefas.count(input("Digite a tarefa que quer ver o nº de vezes que ela aparece: "))
+        tarefa = input("Digite a tarefa que quer ver o nº de vezes que ela aparece: ")
+        contador = listaTarefas.count(tarefa)
+        print(f"A tarefa aparece {contador} vezes. ")
     case 8:
-        listaTarefas.index(input("Digite a tarefa que quer ver a posição: "))
+        tarefa = input("Digite a tarefa que quer ver a posição: ")
+        indice = listaTarefas.index(tarefa)
+        print(f"Posição: {indice}. ")
     case 9:
         listaTarefas.sort()
     case 10:
         listaTarefas.reverse()
     case 11:
-        listaTarefas
+        copia_da_lista = listaTarefas.copy()
+        print(copia_da_lista)
