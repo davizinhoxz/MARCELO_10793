@@ -76,4 +76,15 @@ print(nums_filtrados3)
 
 frutas = ["morango", "banana", "ameixa", "pera"]
 # Nº DE CARACTERES DE CADA FRUTA
-letras_frutas = []
+letras_frutas = [len(fruta) for fruta in frutas]
+print(letras_frutas)
+
+nome = "Davi"
+print(nome)
+nome = list(nome)
+print(nome)
+
+lista = ["Al", "Mar", "Abr"]
+novos_elementos = input("Novos dados: ")
+lista.extend(novos_elementos.split(','))
+print(lista)
