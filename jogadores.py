@@ -71,4 +71,9 @@ for num in nums2:
         else:
             nums_filtrados2.append(num)
 # [11, 29, 19]
-nums_filtrados3
+nums_filtrados3 = [num*2 if num % 2 else num for num in nums2 if 10 <= num <= 20]
+print(nums_filtrados3)
+
+frutas = ["morango", "banana", "ameixa", "pera"]
+# Nº DE CARACTERES DE CADA FRUTA
+letras_frutas = []
