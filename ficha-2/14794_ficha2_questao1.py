@@ -12,20 +12,20 @@ while True:
     print("6. Remover todas as Tarefas.")
     print("7. Contar Ocorrências de Tarefa.")
     print("8. Encontrar Índice de Tarefa.")
-    print("9. Ordenar Tarefas: Organizar as tarefas em ordem alfabética.")
-    print("10. Inverter Ordem das Tarefas: Reverter a ordem atual das tarefas.")
-    print("11. Copiar Lista de Tarefas: Criar uma cópia independente da lista de tarefas.")
+    print("9. Ordenar as tarefas em ordem alfabética.")
+    print("10. Inverter Ordem das Tarefas.")
+    print("11. Criar uma cópia da lista de tarefas.")
     print("0. Acabar.")
 
     num_tarefa = int(input("\nNúmero da tarefa desejada: "))
 
     match num_tarefa:
         case 1:
-            tarefa = input("Qual a próxima tarefa? ")
+            tarefa = input("Digite a próxima tarefa: ")
             listaTarefas.append(tarefa)
 
         case 2:
-            tarefas = input("Quais as próximas tarefas, separadas por vírgula: ")
+            tarefas = input("Digite as próximas tarefas: ")
             tarefas = tarefas.split(",")
             listaTarefas.extend(tarefas)
 
