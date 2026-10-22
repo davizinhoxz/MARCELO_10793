@@ -2,6 +2,7 @@ listaTarefas = []
 
 print("GERIR AS TAREFAS")
 
+
 print("1. Adicionar Tarefa.")
 print("2. Adicionar Múltiplas Tarefas.")
 print("3. Inserir Tarefa em uma Posição Específica.")
