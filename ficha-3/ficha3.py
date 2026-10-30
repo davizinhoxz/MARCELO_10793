@@ -1,11 +1,12 @@
 lista = [1,2,3,4,5,6,7,8,9,10]
 
-multi = []
+# multi = []
 # maiuscula = []
 # maiores = []
 # lista_palavras = ["arantini", "pastel", "triste das ia", "costa"]
 # quadrados = []
 # pares = []
+frutas = ["Banana","Maca","Morango", "Uva", "Pessego"]
 
 # ex1
 # pares = [num for num in lista if num % 2 == 0]
@@ -32,5 +33,12 @@ multi = []
 # print(maiuscula)
 
 # ex6
-multi = [for num in lista if num % 3 == 0]
-print(multi)
+# multi = [num*2 if num % 3 == 0 else num for num in lista]
+# print(multi)
+
+# ex7
+# inicialA = [palavra.upper() for palavra in lista_palavras if palavra.startswith("A")]
+
+# ex8
+tamanhoFrutas = [len(fruta) if len(fruta) > 5 else 0 for fruta in frutas]
+print(tamanhoFrutas)
