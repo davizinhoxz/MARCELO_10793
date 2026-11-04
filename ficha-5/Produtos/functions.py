@@ -11,11 +11,6 @@ def add(nome, preco: int, iva: float):
     }
     
 
-
-# Crie uma função que permita incluir em um dicionário uma nova chave
-# ‘final_price’ que calcule o seu preço final (price * (1+tax)).
-
-
 def update_final_price(d):
     d["final_price"] = round(d["price"] * (1 + d["tax"]),2)
 
