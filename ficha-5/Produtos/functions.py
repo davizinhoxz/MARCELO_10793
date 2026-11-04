@@ -3,7 +3,7 @@
 # deve ser denominada add.
 
 
-def add(nome, preco: int, iva: float):
+def add(nome, preco: float, iva: float):
     return {
         "product": nome,
         "price": preco,

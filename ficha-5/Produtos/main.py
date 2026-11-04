@@ -32,4 +32,4 @@ while True:
     escolha = menu()
 
     
-products.append(add("camisa",12.23,0.13))
+products.append(add("Camisa do Mengão", 67.69, 0.23))
