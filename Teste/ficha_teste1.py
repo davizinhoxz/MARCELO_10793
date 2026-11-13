@@ -5,9 +5,10 @@ print("-----BATALHA-----")
 
 jogador = {
     "vida": 300,
-    "ataque base": 20,
+    "ataque": 20,
     "pocoes": 2,
-    "pontos recuperados": 0
+    "pontos": 0,
+    "derrotados": 0
     }
 
 
@@ -56,3 +57,39 @@ match opcao:
                 print(i + 1, "-", vivos[i]["nome"], "- Vida:", vivos[i]["vida"])
                 
             escolha = input("Escolha o inimigo: ")
+            ...
+            
+    case "2":
+        print("\n-----ESTADO-DO-JOGADOR-----")
+        print("Vida:", jogador["vida"])
+        print("Pontuação:", jogador["pontos"])
+        print("Inimigos Derrotados:", jogador["derrotados"])
+        print("Inimigos Vivos:",len(inimigos) - jogador["derrotados"])
+        print("Poções:", jogador["pocoes"])
+        
+    case  "3":
+        print("\n-----INIMIGOS-VIVOS-----")
+        contagem = 0
+        for inimigo in inimigos:
+            if inimigo["vida"] > 0:
+                print("Nome:", jogador["nome"])
+                print("Vida:", jogador["vida"])
+                print("Ataque:", inimigo["ataque"])
+                
+                contagem +=1
+        if contagem == 0:
+            print("Não existem inimigos vivos!")
+            
+    case "4":
+        if jogador["pocoes"] == 0:
+            print("Voce não tem mais poções!")
+            
+        elif jogador["vida"] >= 300:
+            print("Voce já tem a vida completa!")
+            
+        else:
+            jogador["vida"] += 25
+            jogador["pocoes"] -= 1
+
+            if jogador["vida"] > 300:
+                jogador["vida"] = 300
