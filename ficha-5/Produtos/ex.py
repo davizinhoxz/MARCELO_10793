@@ -248,17 +248,10 @@ while jogo:
         jogo = False
 
 
-# ============================================
-# RESULTADO FINAL
-# ============================================
 
-# Estas instruções estão fora do while
-# Só são executadas quando o jogo terminar
 
 print("\n===== RESULTADO FINAL =====")
 
-# Mostramos a pontuação conseguida
 print("Pontuação:", jogador["pontos"])
 
-# Mostramos o total de inimigos derrotados
 print("Inimigos derrotados:", jogador["derrotados"])
