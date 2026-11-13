@@ -78,14 +78,14 @@ match opcao:
                 
                 contagem +=1
         if contagem == 0:
-            print("Não existem inimigos vivos!")
+            print("Não existem inimigos vivos")
             
     case "4":
         if jogador["pocoes"] == 0:
-            print("Voce não tem mais poções!")
+            print("Voce não tem mais poções")
             
         elif jogador["vida"] >= 300:
-            print("Voce já tem a vida completa!")
+            print("Voce já tem a vida completa")
             
         else:
             jogador["vida"] += 25
@@ -93,3 +93,21 @@ match opcao:
 
             if jogador["vida"] > 300:
                 jogador["vida"] = 300
+                
+            print("Voce usou uma poção e a sua Vida atual é: ", jogador["vida"])
+            print("Agora voce tem: ", jogador["pocoes"], "poções.")
+            
+    case "5":
+        print("A partida terminou porque voce fugiu")
+        jogo = False
+        
+if jogador["vida"] == 0:
+        print("\nVoce perdeu")
+        jogo = False
+elif jogador["derrotados"] == len(inimigos):
+    print("\nPARABENS! GANHOU DE TODO MUNDO")
+    jogo = False
+    
+print("\n-------RESULTADO-FINAL-------")
+print("Pontuação:", jogador["pontos"])
+print("Inimigos derrotados:", jogador["derrotados"])
