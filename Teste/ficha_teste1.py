@@ -43,7 +43,7 @@ opcao = int(input("\nEscolha a opção: "))
 
 
 match opcao:
-    case "1":
+    case 1:
         vivos = []
         for inimigo in inimigos:
             if inimigo["vida"] > 0:
@@ -59,7 +59,7 @@ match opcao:
             escolha = input("Escolha o inimigo: ")
             ...
             
-    case "2":
+    case 2:
         print("\n-----ESTADO-DO-JOGADOR-----")
         print("Vida:", jogador["vida"])
         print("Pontuação:", jogador["pontos"])
@@ -67,7 +67,7 @@ match opcao:
         print("Inimigos Vivos:",len(inimigos) - jogador["derrotados"])
         print("Poções:", jogador["pocoes"])
         
-    case  "3":
+    case  3:
         print("\n-----INIMIGOS-VIVOS-----")
         contagem = 0
         for inimigo in inimigos:
@@ -80,7 +80,7 @@ match opcao:
         if contagem == 0:
             print("Não existem inimigos vivos")
             
-    case "4":
+    case 4:
         if jogador["pocoes"] == 0:
             print("Voce não tem mais poções")
             
@@ -97,7 +97,7 @@ match opcao:
             print("Voce usou uma poção e a sua Vida atual é: ", jogador["vida"])
             print("Agora voce tem: ", jogador["pocoes"], "poções.")
             
-    case "5":
+    case 5:
         print("A partida terminou porque voce fugiu")
         jogo = False
         
