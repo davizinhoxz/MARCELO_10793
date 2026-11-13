@@ -2,6 +2,7 @@ import random
 
 print("-----BATALHA-----")
 
+
 jogador = {
     "vida": 300,
     "ataque": 20,
@@ -9,6 +10,7 @@ jogador = {
     "pontos": 0,
     "derrotados": 0
 }
+
 
 tipoDeInimigos = [
     {"nome": "Goblin", "vida": 40, "ataque": 8, "pontos": 100},
@@ -18,9 +20,11 @@ tipoDeInimigos = [
     {"nome": "Dragão", "vida": 100, "ataque": 20, "pontos": 500}
 ]
 
+
 selecao = random.randint(3, 5)
 #pra nao repetir
 inimigos = random.sample(tipoDeInimigos, selecao)
+
 
 jogo = True
 
@@ -35,13 +39,16 @@ while jogo:
     opcao = int(input("\nEscolha a opção: "))
 
     match opcao:
+        
         case 1:
             vivos = []
             for inimigo in inimigos:
                 if inimigo["vida"] > 0:
                     vivos.append(inimigo)
+                    
             if len(vivos) == 0:
                 print("Não existem inimigos vivos")
+                
             else:
                 print("\nInimigos vivos:")
                 for i in range(len(vivos)):
@@ -68,8 +75,10 @@ while jogo:
         case 4:
             if jogador["pocoes"] == 0:
                 print("Voce não tem mais poções")
+                
             elif jogador["vida"] >= 300:
                 print("Voce já tem a vida completa")
+                
             else:
                 jogador["vida"] += 25
                 jogador["pocoes"] -= 1
@@ -85,6 +94,7 @@ while jogo:
     if jogador["vida"] <= 0:
         print("\nVoce perdeu")
         jogo = False
+        
     elif jogador["derrotados"] == len(inimigos):
         print("\nPARABENS! GANHOU DE TODO MUNDO")
         jogo = False
