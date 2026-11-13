@@ -2,7 +2,6 @@ import random
 
 print("-----BATALHA-----")
 
-
 jogador = {
     "vida": 300,
     "ataque": 20,
@@ -27,6 +26,7 @@ inimigos = random.sample(tipoDeInimigos, selecao)
 
 
 jogo = True
+resultado = ""
 
 while jogo:
     print("========== BATALHA ==========")
@@ -39,16 +39,13 @@ while jogo:
     opcao = int(input("\nEscolha a opção: "))
 
     match opcao:
-        
         case 1:
             vivos = []
             for inimigo in inimigos:
                 if inimigo["vida"] > 0:
                     vivos.append(inimigo)
-                    
             if len(vivos) == 0:
                 print("Não existem inimigos vivos")
-                
             else:
                 print("\nInimigos vivos:")
                 for i in range(len(vivos)):
@@ -76,29 +73,33 @@ while jogo:
             if jogador["pocoes"] == 0:
                 print("Voce não tem mais poções")
                 
-            elif jogador["vida"] >= 300:
-                print("Voce já tem a vida completa")
+            elif jogador["vida"] >= 100:
+                print("Não pode usar poção: já tem 100 ou mais pontos de vida")
                 
             else:
                 jogador["vida"] += 25
                 jogador["pocoes"] -= 1
-                if jogador["vida"] > 300:
-                    jogador["vida"] = 300
+                if jogador["vida"] > 100:
+                    jogador["vida"] = 100
                 print("Voce usou uma poção e a sua Vida atual é: ", jogador["vida"])
                 print("Agora voce tem: ", jogador["pocoes"], "poções.")
 
         case 5:
             print("A partida terminou porque voce fugiu")
+            resultado = "FUGA"
             jogo = False
 
     if jogador["vida"] <= 0:
         print("\nVoce perdeu")
+        resultado = "DERROTA"
         jogo = False
         
     elif jogador["derrotados"] == len(inimigos):
         print("\nPARABENS! GANHOU DE TODO MUNDO")
+        resultado = "VITÓRIA"
         jogo = False
 
 print("\n-------RESULTADO-FINAL-------")
+print("Resultado:", resultado)
 print("Pontuação:", jogador["pontos"])
 print("Inimigos derrotados:", jogador["derrotados"])
