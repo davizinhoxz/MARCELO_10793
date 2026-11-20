@@ -43,5 +43,5 @@ for c in lista:
         print(c)
 
 
-print(f"O(A) cliente {c1.nome} tem {c1.altura}cm e pesa {c1.peso}Kg")
-# print(f"O(A) cliente {c1.nome} tem {c1.altura}cm e pesa {c1.peso}Kg tem gosto pela {c2.nome} que tem {c2.altura}cm e pesa {c2.peso}Kg ")
+# print(f"O(A) cliente {c1.nome} tem {c1.altura}cm e pesa {c1.peso}Kg")
+print(f"O(A) cliente {c1.nome} tem {c1.altura}cm e pesa {c1.peso}Kg tem gosto pela {c2.nome} que tem {c2.altura}cm e pesa {c2.peso}Kg ")
