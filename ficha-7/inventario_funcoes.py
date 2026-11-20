@@ -1,10 +1,11 @@
 from time import sleep
-from os import system
+from os import system, path
 from datetime import datetime
+import json
 
-def registar_log(mensagem):
-    data = datetime.now
-    return f""
+ficheiro_log = "inventario.log"
+ficheiro_json = "inventario.json"
+
 
 
 def meu_decorador(funcao):
@@ -13,6 +14,39 @@ def meu_decorador(funcao):
         sleep(3)
         system("cls")
     return wrapper
+
+
+
+
+
+def guardar_json(inventario):
+    with open(ficheiro_json,"w") as f:
+        json.dump(inventario,f,indent=4)
+        print("Alteração foi guardada com sucesso")
+
+
+
+@meu_decorador
+def visualizar_log():
+    if not path.exists(ficheiro_log):
+        print("O ficheiro nao existe ou nao foi localizado")
+        
+    else:
+        with open(ficheiro_log) as f:
+            conteudo = f.readlines()
+            for linha in conteudo:
+                print(linha.strip())
+
+
+
+
+def registar_log(mensagem):
+    data = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+    return f"[{data}] - {mensagem}\n"
+
+
+
+
 
 
 @meu_decorador
@@ -24,11 +58,18 @@ def view(inventario):
             print(f"{livro["titulo"]} (Id {livro["id"]})")
             print(f"Autor: {livro["autor"]}; Stock: {livro["qtde"]}; Preço atual: {livro["preco"]}")
             print("-"*40)
+            
+            
+            
+            
 
 def novo_id(inventario):
     if len(inventario) == 0:
         return 1
     return inventario[len(inventario)-1]["id"] + 1
+
+
+
 
 @meu_decorador
 def add(inventario: list):
@@ -37,9 +78,17 @@ def add(inventario: list):
     autor = input("Autor: ")
     stock = int(input("Qtde atual: "))
     preco = float(input("Preço de venda: "))
-
+    
     livro = {"id": novo_id(inventario), "titulo": titulo, "autor": autor, "qtde": stock, "preco": preco}
     inventario.append(livro)
+    
+    with open(ficheiro_log,"a") as f:
+        mensagem = f"Livro adicionado com suceso: {titulo} ({livro["id"]})"
+        f.write(ficheiro_log(mensagem))
+    guardar_json(inventario)
+        
+        
+        
 
 @meu_decorador
 def update_stock(inventario):
@@ -47,12 +96,22 @@ def update_stock(inventario):
     id_search = int(input("Digite o id do livro para atualização do stock: "))
     for livro in inventario:
         if livro["id"] == id_search:
+            stock_anterior = livro["qtde"]
             new_stock = int(input("Stock atual: "))
             livro["qtde"] = new_stock
             found = True
+            
+            with open(ficheiro_log,"a") as f:
+                    mensagem = f"Stock atualizado: {livro["titulo"]} ({livro["id"]}); Quantidade anterior: {stock_anterior}; Quantidade atual: {new_stock}"
+                    f.write(ficheiro_log(mensagem))
+            guardar_json(inventario)
+            
             break
     if not found:
         print("Não existe nenhum livro em stock com o id indicado")
+        
+        
+        
 
 @meu_decorador
 def remove(inventario: list):
@@ -62,9 +121,19 @@ def remove(inventario: list):
         if livro["id"] == id_search:
             inventario.remove(livro)
             found = True
+            
+            with open(ficheiro_log,"a") as f:
+                mensagem = f"Livro Removido: {livro["titulo"]} ({livro["id"]})"
+                f.write(ficheiro_log(mensagem))
+            guardar_json(inventario)
+            
             break
     if not found:
         print("Não existe nenhum livro em stock com o id indicado")
+        
+        
+        
+        
 
 @meu_decorador
 def search_by_author_or_title(inventario: list):
@@ -77,7 +146,11 @@ def search_by_author_or_title(inventario: list):
             print(f"- {titulo} ({autor})")
             found = True
     if not found:
-        print("Não existe nenhum livro em stock com o id indicado") 
+        print("Não existe nenhum livro em stock com o id indicado")
+        
+        
+        
+        
 
 @meu_decorador
 def report(inventario):
@@ -85,6 +158,10 @@ def report(inventario):
     for livro in inventario:
         valor_inventario += livro["qtde"] * livro["preco"]
     print(f"Valor atual do inventário: {round(valor_inventario,2)} euros")
+    
+    
+    
+    
 
 def menu():
     print("GESTOR INVENTÁRIO\n")
@@ -94,6 +171,8 @@ def menu():
     print("4- Remover livro")
     print("5- Pesquisar livros por autor ou título")
     print("6- Valor atual em stock")
-    print("7- Sair")
+    print("7- Consultar histórico de operações")
+    print("8- Carregar inventário")
+    print("9- Sair")
     op = int(input("\nEscolha uma opção: "))
     return op
