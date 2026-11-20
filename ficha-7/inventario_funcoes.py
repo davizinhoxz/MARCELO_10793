@@ -17,14 +17,19 @@ def meu_decorador(funcao):
 
 
 
-@meu_decorador
+
 def carregar_json():
     if not path.exists(ficheiro_json):
             print("O ficheiro nao existe ou nao foi localizado")
+            sleep(2)
+            system("cls")
+            return []
     else:
         with open(ficheiro_json,"r") as f:
             dados = json.load(f)
             print("Dados Carregados com sucesso")
+            sleep(2)
+            system("cls")
             return dados
         
 
@@ -40,6 +45,9 @@ def guardar_json(inventario):
 
 @meu_decorador
 def visualizar_log():
+    """
+    Permite visualizar o ficheiro de log com o historico
+    """
     if not path.exists(ficheiro_log):
         print("O ficheiro nao existe ou nao foi localizado")
         

@@ -18,9 +18,10 @@ while True:
         case 6:
             report(livros)
         case 7:
-            visualizar_log(livros)
+            visualizar_log()
         case 8:
-            carregar_json(livros)
+            #carregar_json(livros) 
+            livros = carregar_json()
         case 9:
             break
 
