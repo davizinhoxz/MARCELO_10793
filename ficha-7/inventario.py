@@ -20,7 +20,7 @@ while True:
         case 7:
             visualizar_log(livros)
         case 8:
-            ...
+            carregar_json(livros)
         case 9:
             break
 
